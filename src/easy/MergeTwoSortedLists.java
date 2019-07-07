@@ -28,9 +28,18 @@ public class MergeTwoSortedLists {
         }
     }
 
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
     //题意是用一个新链表来合并两个已排序的链表，那我们只需要从头开始比较已排序的两个链表，
-    // 新链表指针每次指向值小的节点，依次比较下去，最后，当其中一个链表到达了末尾，
-    // 我们只需要把新链表指针指向另一个没有到末尾的链表此时的指针即可。
+    //新链表指针每次指向值小的节点，依次比较下去，最后，当其中一个链表到达了末尾，
+    //我们只需要把新链表指针指向另一个没有到末尾的链表此时的指针即可。
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
         ListNode temp = head;
@@ -48,12 +57,24 @@ public class MergeTwoSortedLists {
         return head.next;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
+    public ListNode mergeTwoLists2(ListNode l1,ListNode l2){
+        if(l1 == null){
+            return l2;
         }
+        if(l2 == null){
+            return l1;
+        }
+        ListNode head = null;
+        if(l1.val < l2.val){
+            head = l1;
+            l1 = l1.next;
+            head.next = mergeTwoLists(l1,l2);
+        }else{
+            head = l2;
+            l2 = l2.next;
+            head.next = mergeTwoLists(l1,l2);
+        }
+        return head;
     }
+
 }

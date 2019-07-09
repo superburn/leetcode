@@ -21,12 +21,7 @@ public class RotatedArraySearch {
 
 //    整体思路：先用二分法找出最小值，也是那个分割点,例如 [4,5,6,7,0,1,2]，我们找出数字 0；
 //    接下来判断 target 是在分割点的左边还是右边;
-//    最后再使用一次二分法找出 target 的位置. 所以时间复杂度为：O(logn)O(logn)
-//
-//    作者：powcai
-//    链接：https://leetcode-cn.com/problems/two-sum/solution/sou-suo-xuan-zhuan-pai-xu-shu-zu-by-powcai/
-//    来源：力扣（LeetCode）
-//    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//    最后再使用一次二分法找出 target 的位置. 所以时间复杂度为：O(logn)
 
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
